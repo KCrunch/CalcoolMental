@@ -1,37 +1,33 @@
 package fr.kcrunch.calcoolmental;
 
+import android.content.Intent;
 import android.os.Bundle;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 
-import fr.kcrunch.calcoolmental.databinding.ActivityMainBinding;
+import com.example.td1.view.CalculActivity;
+import com.example.td1.view.HistoryActivity;
 
 public class MainActivity extends AppCompatActivity {
-
-    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-
-        BottomNavigationView navView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_dashboard, R.id.navigation_home,  R.id.navigation_notifications)
-                .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        NavigationUI.setupWithNavController(binding.navView, navController);
+        setContentView(R.layout.activity_main);
+        Button boutonCalculer = findViewById(R.id.buttonCalculer);
+        boutonCalculer.setOnClickListener(view -> lancerActivtyCalcul());
+        Button boutonDernierCalcul = findViewById(R.id.buttonLastCompute);
+        boutonDernierCalcul.setOnClickListener(view -> lancerActivtyHistory());
     }
 
+    private void lancerActivtyHistory() {
+        Intent intent = new Intent(this, HistoryActivity.class);
+        startActivity(intent);
+    }
+
+    private void lancerActivtyCalcul() {
+        Intent intent = new Intent(this, CalculActivity.class);
+        startActivity(intent);
+    }
 }
