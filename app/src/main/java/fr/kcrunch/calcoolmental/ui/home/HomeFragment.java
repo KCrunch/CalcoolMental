@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import fr.kcrunch.calcoolmental.R;
 import fr.kcrunch.calcoolmental.databinding.FragmentHomeBinding;
 
 public class HomeFragment extends Fragment {
